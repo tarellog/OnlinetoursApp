@@ -9,6 +9,16 @@
         android:id="@+id/toursSearchFragment"
         android:name="com.example.onlinetoursapp.feature.search.ToursSearchFragment"
         android:label="ToursSearchFragment"
-        tools:layout="@layout/fragment_tours_search" />
+        tools:layout="@layout/fragment_tours_search" >
+        <action
+            android:id="@+id/action_toursSearchFragment_to_searchFromDialog"
+            app:destination="@id/searchFromDialog" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/searchFromDialog"
+        android:name="com.example.onlinetoursapp.feature.search.dialogs.SearchFromDialog"
+        android:label="SearchFromDialog"
+        tools:layout="@layout/dialog_search_from"/>
 
 </navigation>

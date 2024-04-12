@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">OnlinetoursApp</string>
+
+    <!-- Search feature -->
+    <string name="depart_city">Город вылета</string>
+    <string name="cansel_dialog">Закрыть</string>
+    <string name="city_name">Москва</string>
+    <string name="search_tours">Поиск туров</string>
+    <string name="from">Откуда</string>
+    <string name="to">Куда</string>
+    <string name="departure_date">ДАТЫ ВЫЛЕТА</string>
+    <string name="data">17 сентября</string>
+    <string name="count">КОЛИЧЕСТВО</string>
+    <string name="count_day">10 ночей</string>
+    <string name="count_people">2 взрослых</string>
+    <string name="who_coming">КТО ЕДЕТ</string>
+
+
 </resources>

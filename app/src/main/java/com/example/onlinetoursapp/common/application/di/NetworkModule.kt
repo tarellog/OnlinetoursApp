@@ -11,7 +11,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 private const val URL = "https://www.onlinetours.ru/api/v2/public/"
@@ -36,7 +35,7 @@ class NetworkModule {
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor { message: String? -> Log.d("network", "LOG_BASIC $message") }
-            .setLevel(HttpLoggingInterceptor.Level.BASIC)
+            .setLevel(HttpLoggingInterceptor.Level.HEADERS)
 
     @Singleton
     @Provides
@@ -57,10 +56,11 @@ class NetworkModule {
     @Singleton
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
+        kotlinConverterFactory: Converter.Factory
     ): Retrofit = Retrofit.Builder()
         .baseUrl(URL)
         .client(okHttpClient)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(kotlinConverterFactory)
         .build()
 
 }
