@@ -10,11 +10,14 @@ import android.widget.FrameLayout
 import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.setFragmentResult
+import androidx.navigation.fragment.navArgs
 import com.example.onlinetoursapp.common.application.appComponent
 import com.example.onlinetoursapp.databinding.DialogSearchFromBinding
-import com.example.onlinetoursapp.feature.search.adapter.SearchAdapter
+import com.example.onlinetoursapp.feature.search.adapter.CitiesAdapter
+import com.example.onlinetoursapp.feature.search.adapter.RegionsAdapter
 import com.example.onlinetoursapp.feature.search.di.DaggerSearchComponent
 import com.example.onlinetoursapp.feature.search.domain.model.CitiesData
+import com.example.onlinetoursapp.feature.search.domain.model.RegionsData
 import com.example.onlinetoursapp.feature.search.presenter.SearchPresenter
 import com.example.onlinetoursapp.feature.search.presenter.SearchView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -29,11 +32,14 @@ class SearchFromDialog : MvpBottomSheetDialogFragment(), SearchView {
     private var _binding: DialogSearchFromBinding? = null
     private val binding get() = _binding ?: throw NullPointerException("Binding is not initialized")
 
+    private val args: SearchFromDialogArgs by navArgs()
+
     @Inject
     lateinit var presenterProvider: Provider<SearchPresenter>
     private val presenter by moxyPresenter { presenterProvider.get() }
 
-    private lateinit var searchAdapter: SearchAdapter
+    private lateinit var citiesAdapter: CitiesAdapter
+    private lateinit var regionsAdapter: RegionsAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -56,11 +62,17 @@ class SearchFromDialog : MvpBottomSheetDialogFragment(), SearchView {
         setupSearchInputField()
         setupCancelButton()
         stateDialog()
+        setupSearchType()
     }
 
     private fun setupRecycler() {
-        searchAdapter = SearchAdapter(presenter::onClickItem)
-        binding.recycler.adapter = searchAdapter
+        if (args.searchType) {
+            citiesAdapter = CitiesAdapter(presenter::onClickItem)
+            binding.recycler.adapter = citiesAdapter
+        } else {
+            regionsAdapter = RegionsAdapter(presenter::onClickItem2)
+            binding.recycler.adapter = regionsAdapter
+        }
     }
 
     private fun clearFocus() {
@@ -92,17 +104,26 @@ class SearchFromDialog : MvpBottomSheetDialogFragment(), SearchView {
         binding.inputField.requestFocus()
     }
 
-    override fun loadCitiesData(list: List<CitiesData>) {
-        searchAdapter.submitList(list)
+    private fun setupSearchType() {
+        presenter.typeSearch(args.searchType)
     }
 
-    override fun onDismiss(city: String, departCityId: Int) {
+    override fun loadCitiesData(list: List<CitiesData>) {
+        citiesAdapter.submitList(list)
+    }
+
+    override fun loadRegionData(list: List<RegionsData>) {
+        regionsAdapter.submitList(list)
+    }
+
+    override fun onDismiss(city: String, departCityId: Int?, regionId: Int?) {
         dismiss()
         setFragmentResult(
             SEARCH_DIALOG,
             bundleOf(
                 BUNDLE_SEARCH to city,
-                BUNDLE_SEARCH_ID to departCityId
+                BUNDLE_CITIES_ID to departCityId,
+                BUNDLE_REGION_ID to regionId
             )
         )
     }
@@ -115,6 +136,7 @@ class SearchFromDialog : MvpBottomSheetDialogFragment(), SearchView {
     companion object {
         const val SEARCH_DIALOG = "SEARCH_DIALOG"
         const val BUNDLE_SEARCH = "BUNDLE_SEARCH"
-        const val BUNDLE_SEARCH_ID = "BUNDLE_SEARCH_ID"
+        const val BUNDLE_CITIES_ID = "BUNDLE_CITIES_ID"
+        const val BUNDLE_REGION_ID = "BUNDLE_REGION_ID"
     }
 }

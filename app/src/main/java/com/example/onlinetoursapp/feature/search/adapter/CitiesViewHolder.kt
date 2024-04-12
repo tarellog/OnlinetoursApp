@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.onlinetoursapp.databinding.ItemSearchCitiesBinding
 import com.example.onlinetoursapp.feature.search.domain.model.CitiesData
 
-class SearchViewHolder(private val binding: ItemSearchCitiesBinding) :
+class CitiesViewHolder(private val binding: ItemSearchCitiesBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     constructor(parent: ViewGroup) : this(

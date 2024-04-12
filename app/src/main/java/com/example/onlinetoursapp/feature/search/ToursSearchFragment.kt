@@ -12,8 +12,9 @@ import com.example.onlinetoursapp.R
 import com.example.onlinetoursapp.common.application.appComponent
 import com.example.onlinetoursapp.databinding.FragmentToursSearchBinding
 import com.example.onlinetoursapp.feature.search.di.DaggerSearchComponent
+import com.example.onlinetoursapp.feature.search.dialogs.SearchFromDialog.Companion.BUNDLE_CITIES_ID
+import com.example.onlinetoursapp.feature.search.dialogs.SearchFromDialog.Companion.BUNDLE_REGION_ID
 import com.example.onlinetoursapp.feature.search.dialogs.SearchFromDialog.Companion.BUNDLE_SEARCH
-import com.example.onlinetoursapp.feature.search.dialogs.SearchFromDialog.Companion.BUNDLE_SEARCH_ID
 import com.example.onlinetoursapp.feature.search.dialogs.SearchFromDialog.Companion.SEARCH_DIALOG
 import com.example.onlinetoursapp.feature.search.presenter.ToursSearchPresenter
 import com.example.onlinetoursapp.feature.search.presenter.ToursSearchView
@@ -30,6 +31,8 @@ class ToursSearchFragment : MvpAppCompatFragment(), ToursSearchView {
     @Inject
     lateinit var presenterProvider: Provider<ToursSearchPresenter>
     private val presenter by moxyPresenter { presenterProvider.get() }
+
+    private var typeSearch = true
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -48,29 +51,46 @@ class ToursSearchFragment : MvpAppCompatFragment(), ToursSearchView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         test()
+        setupButton()
         openSearchFromDialog()
-
+        openSearchToDialog()
     }
 
     private fun test() {
         setFragmentResultListener(SEARCH_DIALOG) { _, bundle ->
             val search = bundle.getString(BUNDLE_SEARCH)
-            val departCityId = bundle.getInt(BUNDLE_SEARCH_ID)
-            binding.searchFrom.text = search
+            val departCityId = bundle.getInt(BUNDLE_CITIES_ID)
+            val regionId = bundle.getInt(BUNDLE_REGION_ID)
+            if (typeSearch) binding.searchFrom.text = search
+            else binding.searchTo.text = search
             binding.searchFrom.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
-            presenter.setCityId(departCityId)
+            binding.searchTo.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+            if (typeSearch) presenter.setCityId(departCityId)
+            else presenter.setRegionId(regionId)
+        }
+    }
+
+    private fun setupButton() {
+        binding.search.setOnClickListener {
+            presenter.okey()
         }
     }
 
     private fun openSearchFromDialog() {
         binding.searchFrom.setOnClickListener {
-            findNavController().navigate(R.id.action_toursSearchFragment_to_searchFromDialog)
+            typeSearch = true
+            val action =
+                ToursSearchFragmentDirections.actionToursSearchFragmentToSearchFromDialog(typeSearch)
+            findNavController().navigate(action)
         }
     }
 
     private fun openSearchToDialog() {
         binding.searchTo.setOnClickListener {
-            findNavController().navigate(R.id.action_toursSearchFragment_to_searchFromDialog)
+            typeSearch = false
+            val action =
+                ToursSearchFragmentDirections.actionToursSearchFragmentToSearchFromDialog(typeSearch)
+            findNavController().navigate(action)
         }
     }
 

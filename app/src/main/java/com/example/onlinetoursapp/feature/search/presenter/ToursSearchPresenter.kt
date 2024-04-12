@@ -14,6 +14,7 @@ class ToursSearchPresenter @Inject constructor(
 ) : MvpPresenter<ToursSearchView>() {
 
     private var _cityId = 0
+    private var _regionId = 0
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
@@ -23,6 +24,10 @@ class ToursSearchPresenter @Inject constructor(
         _cityId = cityId
     }
 
+    fun setRegionId(cityId: Int) {
+        _regionId = cityId
+    }
+
     fun okey() {
         presenterScope.launch {
             try {
@@ -30,7 +35,7 @@ class ToursSearchPresenter @Inject constructor(
                     SearchBody(
                         CreateSearchBody(
                             _cityId,
-                            listOf(352),
+                            listOf(_regionId),
                             "2024-04-17",
                             "2024-04-30",
                             7,

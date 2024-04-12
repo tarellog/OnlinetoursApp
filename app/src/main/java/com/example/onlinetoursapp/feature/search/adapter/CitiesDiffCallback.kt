@@ -3,7 +3,7 @@ package com.example.onlinetoursapp.feature.search.adapter
 import androidx.recyclerview.widget.DiffUtil
 import com.example.onlinetoursapp.feature.search.domain.model.CitiesData
 
-class SearchDiffCallback : DiffUtil.ItemCallback<CitiesData>() {
+class CitiesDiffCallback : DiffUtil.ItemCallback<CitiesData>() {
 
     override fun areItemsTheSame(oldItem: CitiesData, newItem: CitiesData): Boolean =
         oldItem.id == newItem.id

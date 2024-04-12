@@ -3,6 +3,7 @@ package com.example.onlinetoursapp.feature.search.presenter
 import android.util.Log
 import com.example.onlinetoursapp.feature.search.data.network.SearchRepository
 import com.example.onlinetoursapp.feature.search.domain.model.CitiesData
+import com.example.onlinetoursapp.feature.search.domain.model.RegionsData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import moxy.MvpPresenter
@@ -14,14 +15,24 @@ class SearchPresenter @Inject constructor(
 ) : MvpPresenter<SearchView>() {
 
     private var _city = ""
+    private var typeSearch = true
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        loadCitiesData()
+        loadData()
     }
 
     fun onChangeListener(city: String) {
         _city = city
+    }
+
+    fun typeSearch(type: Boolean) {
+        typeSearch = type
+    }
+
+    private fun loadData() {
+        if (typeSearch) loadCitiesData()
+        else loadRegionsData()
     }
 
     private fun loadCitiesData() {
@@ -35,9 +46,24 @@ class SearchPresenter @Inject constructor(
         }
     }
 
+    private fun loadRegionsData() {
+        presenterScope.launch(Dispatchers.Main) {
+            try {
+                val regions = searchRepository.getRegions()
+                viewState.loadRegionData(regions)
+            } catch (e: Exception) {
+                Log.e("tag", "Exception", e)
+            }
+        }
+    }
+
     fun onClickItem(item: CitiesData) {
         _city = item.name
-        viewState.onDismiss(_city, item.id.toInt())
+        viewState.onDismiss(_city, departCityId = item.id.toInt())
+    }
+
+    fun onClickItem2(item: RegionsData) {
+        viewState.onDismiss(item.name, regionId = item.id.toInt())
     }
 
 }
