@@ -5,9 +5,14 @@
     android:id="@+id/search_nav_graph"
     app:startDestination="@id/toursSearchFragment">
 
+    <include app:graph="@navigation/hotel_nav_graph" />
+    <action
+        android:id="@+id/action_global_hotel_nav_graph"
+        app:destination="@id/hotel_nav_graph" />
+
     <fragment
         android:id="@+id/toursSearchFragment"
-        android:name="com.example.onlinetoursapp.feature.search.ToursSearchFragment"
+        android:name="com.example.onlinetoursapp.feature.ToursSearchFragment"
         android:label="ToursSearchFragment"
         tools:layout="@layout/fragment_tours_search" >
         <action
@@ -17,7 +22,7 @@
 
     <dialog
         android:id="@+id/searchFromDialog"
-        android:name="com.example.onlinetoursapp.feature.search.dialogs.SearchFromDialog"
+        android:name="com.example.onlinetoursapp.feature.dialogs.SearchFromDialog"
         android:label="SearchFromDialog"
         tools:layout="@layout/dialog_search_from">
         <argument

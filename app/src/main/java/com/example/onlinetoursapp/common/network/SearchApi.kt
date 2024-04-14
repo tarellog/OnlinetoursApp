@@ -1,10 +1,10 @@
 package com.example.onlinetoursapp.common.network
 
-import com.example.onlinetoursapp.feature.search.data.model.CitiesResponse
-import com.example.onlinetoursapp.feature.search.data.model.GetSearchKeyResponse
-import com.example.onlinetoursapp.feature.search.data.model.RegionsResponse
-import com.example.onlinetoursapp.feature.search.data.model.ResultResponse
-import com.example.onlinetoursapp.feature.search.data.model.SearchBody
+import com.example.onlinetoursapp.feature.data.hotel.model.GetSearchKeyResponse
+import com.example.onlinetoursapp.feature.data.hotel.model.ResultResponse
+import com.example.onlinetoursapp.feature.data.hotel.model.SearchBody
+import com.example.onlinetoursapp.feature.data.search.model.CitiesResponse
+import com.example.onlinetoursapp.feature.data.search.model.RegionsResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST

@@ -11,37 +11,36 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
-import javax.inject.Singleton
 
 private const val URL = "https://www.onlinetours.ru/api/v2/public/"
 
 @Module
 class NetworkModule {
 
-    @Singleton
+    @ApplicationScope
     @Provides
     fun provideJson(): Json {
         return Json { ignoreUnknownKeys = true }
     }
 
-    @Singleton
+    @ApplicationScope
     @Provides
     fun provideConvertJson(json: Json): Converter.Factory {
         val contentType = "application/json".toMediaType()
         return json.asConverterFactory(contentType)
     }
 
-    @Singleton
+    @ApplicationScope
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor { message: String? -> Log.d("network", "LOG_BASIC $message") }
             .setLevel(HttpLoggingInterceptor.Level.HEADERS)
 
-    @Singleton
+    @ApplicationScope
     @Provides
     fun provideRequestInterceptor() = RequestInterceptor()
 
-    @Singleton
+    @ApplicationScope
     @Provides
     fun provideOkHttpClient(
         requestInterceptor: RequestInterceptor,
@@ -52,8 +51,8 @@ class NetworkModule {
             .addInterceptor(httpLogInterceptor)
             .build()
 
+    @ApplicationScope
     @Provides
-    @Singleton
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
         kotlinConverterFactory: Converter.Factory

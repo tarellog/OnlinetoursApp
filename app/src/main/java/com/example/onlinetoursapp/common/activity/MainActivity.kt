@@ -3,7 +3,7 @@ package com.example.onlinetoursapp.common.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.onlinetoursapp.common.activity.di.DaggerMainActivityComponent
-import com.example.onlinetoursapp.common.application.appComponent
+import com.example.onlinetoursapp.common.application.ToursApplication
 import com.example.onlinetoursapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        DaggerMainActivityComponent.factory().create(appComponent).inject(this)
+        DaggerMainActivityComponent.factory().create(ToursApplication.appComponent).inject(this)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }

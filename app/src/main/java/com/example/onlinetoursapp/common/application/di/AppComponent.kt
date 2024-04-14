@@ -2,12 +2,11 @@ package com.example.onlinetoursapp.common.application.di
 
 import android.app.Application
 import com.example.onlinetoursapp.common.application.ToursApplication
-import com.example.onlinetoursapp.common.network.SearchApi
+import com.example.onlinetoursapp.feature.di.SearchComponentDependencies
 import dagger.BindsInstance
 import dagger.Component
-import javax.inject.Singleton
 
-@Singleton
+@ApplicationScope
 @Component(
     modules = [
         AppModule::class,
@@ -15,10 +14,9 @@ import javax.inject.Singleton
         ApiModule::class
     ]
 )
-interface AppComponent {
+interface AppComponent : SearchComponentDependencies {
 
     fun inject(app: ToursApplication)
-    fun getSearchApi(): SearchApi
 
     @Component.Builder
     interface Builder {

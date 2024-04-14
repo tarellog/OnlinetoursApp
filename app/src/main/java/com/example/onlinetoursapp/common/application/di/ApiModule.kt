@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 
 @Module
 class ApiModule {
-
+    @ApplicationScope
     @Provides
     fun provideSearchApi(retrofit: Retrofit): SearchApi = retrofit.create(SearchApi::class.java)
 

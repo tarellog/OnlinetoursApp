@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="16dp"
+    android:layout_marginBottom="6dp"
+    android:paddingBottom="16dp">
+
+    <ImageView
+        android:id="@+id/hotel_main_image"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/travel"/>
+
+    <ImageView
+        android:id="@+id/hotel_stars_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_main_image"
+        tools:src="@drawable/image_stars" />
+
+    <TextView
+        android:id="@+id/hotel_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_two"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_stars_image"
+        tools:text="Starlight Resort Hotel - Kids Concept Premium Large " />
+
+    <TextView
+        android:id="@+id/hotel_chip_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_block_hotel"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_title"
+        tools:text="1 линия" />
+
+    <TextView
+        android:id="@+id/hotel_chip_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_block_hotel"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/hotel_chip_first"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_title"
+        tools:text="200м до пляжа" />
+
+    <TextView
+        android:id="@+id/hotel_chip_third"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_block_hotel"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/hotel_chip_second"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_title"
+        tools:text="Бесплатный Wi-Fi " />
+
+    <TextView
+        android:id="@+id/hotel_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_chip_first"
+        tools:text="Туда " />
+
+    <TextView
+        android:id="@+id/hotel_to_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/hotel_to"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_chip_second"
+        tools:text="17.09 пн" />
+
+    <TextView
+        android:id="@+id/hotel_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/hotel_to_number"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_chip_second"
+        tools:text=" · Обратно " />
+
+    <TextView
+        android:id="@+id/hotel_back_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/hotel_back"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_chip_third"
+        tools:text="27.09 пн" />
+
+    <TextView
+        android:id="@+id/hotel_night"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/hotel_back_number"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_chip_third"
+        tools:text=" · Ночей " />
+
+    <TextView
+        android:id="@+id/hotel_night_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/hotel_night"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_chip_third"
+        tools:text="10" />
+
+    <TextView
+        android:id="@+id/hotel_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black_two"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_back"
+        tools:text="от 148 330 ₽ за 2-х" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
