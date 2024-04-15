@@ -1,6 +1,6 @@
 package com.example.onlinetoursapp.feature.domain.usecase
 
-import com.example.onlinetoursapp.feature.di.SearchScope
+import com.example.onlinetoursapp.feature.di.FeatureScope
 import com.example.onlinetoursapp.feature.domain.model.SearchFrom
 import com.example.onlinetoursapp.feature.domain.model.SearchModel
 import com.example.onlinetoursapp.feature.domain.model.SearchTo
@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
-@SearchScope
+@FeatureScope
 class SearchUseCase @Inject constructor() {
 
     private val searchTest = MutableStateFlow(SearchModel())

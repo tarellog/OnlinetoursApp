@@ -2,13 +2,13 @@ package com.example.onlinetoursapp.feature.di
 
 import com.example.onlinetoursapp.common.application.ToursApplication
 
-object SearchHolder {
-    private var component: SearchComponent? = null
+object FeatureHolder {
+    private var component: FeatureComponent? = null
 
-    fun createComponent(): SearchComponent {
+    fun createComponent(): FeatureComponent {
         if (component == null) {
             component =
-                DaggerSearchComponent.factory()
+                DaggerFeatureComponent.factory()
                     .create(
                          ToursApplication.appComponent,
                     )

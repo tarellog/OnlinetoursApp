@@ -5,16 +5,16 @@ import com.example.onlinetoursapp.feature.ToursSearchFragment
 import com.example.onlinetoursapp.feature.dialogs.SearchFromDialog
 import dagger.Component
 
-@SearchScope
+@FeatureScope
 @Component(
     modules = [
-        SearchFeatureModule::class
+        FeatureModule::class
     ],
     dependencies = [
-        SearchComponentDependencies::class
+        FeatureComponentDependencies::class
     ]
 )
-interface SearchComponent {
+interface FeatureComponent {
 
     fun inject(fragment: ToursSearchFragment)
     fun inject(dialog: SearchFromDialog)
@@ -22,6 +22,6 @@ interface SearchComponent {
 
     @Component.Factory
     interface Factory {
-        fun create(appComponent: SearchComponentDependencies): SearchComponent
+        fun create(appComponent: FeatureComponentDependencies): FeatureComponent
     }
 }

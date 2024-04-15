@@ -15,15 +15,15 @@ import dagger.Module
 import moxy.MvpPresenter
 
 @Module
-interface SearchFeatureModule {
-    @[SearchScope Binds]
+interface FeatureModule {
+    @[FeatureScope Binds]
     fun bindSearchRepository(impl: SearchRepositoryImpl): SearchRepository
-    @[SearchScope Binds]
+    @[FeatureScope Binds]
     fun bindHotelRepository(impl: HotelRepositoryImpl): HotelRepository
-    @[SearchScope Binds]
+    @[FeatureScope Binds]
     fun bindSearchPresenter(impl: SearchPresenter): MvpPresenter<SearchView>
-    @[SearchScope Binds]
+    @[FeatureScope Binds]
     fun bindToursSearchPresenter(impl: ToursSearchPresenter): MvpPresenter<ToursSearchView>
-    @[SearchScope Binds]
+    @[FeatureScope Binds]
     fun bindHotelPresenter(impl: HotelPresenter): MvpPresenter<HotelView>
 }

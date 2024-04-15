@@ -2,7 +2,7 @@ package com.example.onlinetoursapp.common.application.di
 
 import android.app.Application
 import com.example.onlinetoursapp.common.application.ToursApplication
-import com.example.onlinetoursapp.feature.di.SearchComponentDependencies
+import com.example.onlinetoursapp.feature.di.FeatureComponentDependencies
 import dagger.BindsInstance
 import dagger.Component
 
@@ -14,7 +14,7 @@ import dagger.Component
         ApiModule::class
     ]
 )
-interface AppComponent : SearchComponentDependencies {
+interface AppComponent : FeatureComponentDependencies {
 
     fun inject(app: ToursApplication)
 

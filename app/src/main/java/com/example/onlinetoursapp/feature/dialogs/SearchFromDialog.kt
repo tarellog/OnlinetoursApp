@@ -12,7 +12,7 @@ import com.example.onlinetoursapp.common.extensions.hideKeyboard
 import com.example.onlinetoursapp.databinding.DialogSearchFromBinding
 import com.example.onlinetoursapp.feature.adapter.search.CitiesAdapter
 import com.example.onlinetoursapp.feature.adapter.search.RegionsAdapter
-import com.example.onlinetoursapp.feature.di.SearchHolder
+import com.example.onlinetoursapp.feature.di.FeatureHolder
 import com.example.onlinetoursapp.feature.domain.model.CitiesData
 import com.example.onlinetoursapp.feature.domain.model.RegionsData
 import com.example.onlinetoursapp.feature.presenter.SearchPresenter
@@ -40,7 +40,7 @@ class SearchFromDialog : MvpBottomSheetDialogFragment(), SearchView {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        SearchHolder.createComponent().inject(this)
+        FeatureHolder.createComponent().inject(this)
     }
 
     override fun onCreateView(
@@ -76,6 +76,8 @@ class SearchFromDialog : MvpBottomSheetDialogFragment(), SearchView {
         binding.inputField.setOnEditorActionListener { _, actionId, _ ->
             binding.inputField.hideKeyboard()
             binding.inputField.clearFocus()
+            presenter.searchCity()
+            presenter.searchRegion()
             false
         }
     }
@@ -115,6 +117,12 @@ class SearchFromDialog : MvpBottomSheetDialogFragment(), SearchView {
 
     override fun onDismiss() {
         dismiss()
+    }
+
+    override fun onDestroyView() {
+        binding.recycler.adapter = null
+        _binding = null
+        super.onDestroyView()
     }
 
 }

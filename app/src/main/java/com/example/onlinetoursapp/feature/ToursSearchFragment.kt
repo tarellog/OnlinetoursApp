@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.onlinetoursapp.R
 import com.example.onlinetoursapp.databinding.FragmentToursSearchBinding
-import com.example.onlinetoursapp.feature.di.SearchHolder
+import com.example.onlinetoursapp.feature.di.FeatureHolder
 import com.example.onlinetoursapp.feature.domain.model.SearchFrom
 import com.example.onlinetoursapp.feature.domain.model.SearchTo
 import com.example.onlinetoursapp.feature.presenter.ToursSearchPresenter
@@ -32,7 +32,7 @@ class ToursSearchFragment : MvpAppCompatFragment(), ToursSearchView {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        SearchHolder.createComponent().inject(this)
+        FeatureHolder.createComponent().inject(this)
     }
 
     override fun onCreateView(
@@ -86,6 +86,11 @@ class ToursSearchFragment : MvpAppCompatFragment(), ToursSearchView {
                 )
             findNavController().navigate(action)
         }
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 
 }

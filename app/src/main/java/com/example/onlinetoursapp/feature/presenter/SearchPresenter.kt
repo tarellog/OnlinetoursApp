@@ -50,11 +50,35 @@ class SearchPresenter @Inject constructor(
         }
     }
 
+    fun searchCity() {
+        presenterScope.launch(Dispatchers.Main) {
+            try {
+                val citesData = searchRepository.getCities()
+                val selectedCity = citesData.filter { _city == it.name }
+                viewState.loadCitiesData(selectedCity)
+            } catch (e: Exception) {
+                Log.e("tag", "Exception", e)
+            }
+        }
+    }
+
     private fun loadRegionsData() {
         presenterScope.launch(Dispatchers.Main) {
             try {
                 val regions = searchRepository.getRegions()
                 viewState.loadRegionData(regions)
+            } catch (e: Exception) {
+                Log.e("tag", "Exception", e)
+            }
+        }
+    }
+
+    fun searchRegion() {
+        presenterScope.launch(Dispatchers.Main) {
+            try {
+                val regions = searchRepository.getRegions()
+                val selectedRegion = regions.filter { _city == it.name }
+                viewState.loadRegionData(selectedRegion)
             } catch (e: Exception) {
                 Log.e("tag", "Exception", e)
             }

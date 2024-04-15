@@ -3,12 +3,12 @@ package com.example.onlinetoursapp.feature.domain.usecase
 import com.example.onlinetoursapp.feature.data.hotel.model.CreateSearchBody
 import com.example.onlinetoursapp.feature.data.hotel.model.SearchBody
 import com.example.onlinetoursapp.feature.data.hotel.network.HotelRepository
-import com.example.onlinetoursapp.feature.di.SearchScope
+import com.example.onlinetoursapp.feature.di.FeatureScope
 import com.example.onlinetoursapp.feature.domain.model.GetSearchKeyData
 import com.example.onlinetoursapp.feature.domain.model.HotelData
 import javax.inject.Inject
 
-@SearchScope
+@FeatureScope
 class HotelUseCaseImpl @Inject constructor(
     private val hotelRepository: HotelRepository,
     private val searchUseCase: SearchUseCase
@@ -28,8 +28,8 @@ class HotelUseCaseImpl @Inject constructor(
                     searchUseCase.observeToSearch().value.from.cityId ?: 0,
                     listOf(searchUseCase.observeToSearch().value.to.regionId ?: 0),
                     "2024-04-17",
-                    "2024-04-30",
-                    7,
+                    "2024-04-18",
+                    12,
                     17,
                     2
                 )

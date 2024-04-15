@@ -26,7 +26,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hotel_main_image"
-        tools:src="@drawable/image_stars" />
+        android:src="@drawable/image_stars" />
 
     <TextView
         android:id="@+id/hotel_title"
@@ -50,7 +50,7 @@
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hotel_title"
-        tools:text="1 линия" />
+        android:text="1 линия" />
 
     <TextView
         android:id="@+id/hotel_chip_second"
@@ -64,7 +64,7 @@
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/hotel_chip_first"
         app:layout_constraintTop_toBottomOf="@+id/hotel_title"
-        tools:text="200м до пляжа" />
+        android:text="200м до пляжа" />
 
     <TextView
         android:id="@+id/hotel_chip_third"
@@ -78,7 +78,7 @@
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/hotel_chip_second"
         app:layout_constraintTop_toBottomOf="@+id/hotel_title"
-        tools:text="Бесплатный Wi-Fi " />
+        android:text="Бесплатный Wi-Fi " />
 
     <TextView
         android:id="@+id/hotel_to"
@@ -87,7 +87,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hotel_chip_first"
-        tools:text="Туда " />
+        android:text="Туда " />
 
     <TextView
         android:id="@+id/hotel_to_number"
@@ -105,7 +105,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/hotel_to_number"
         app:layout_constraintTop_toBottomOf="@+id/hotel_chip_second"
-        tools:text=" · Обратно " />
+        android:text=" · Обратно " />
 
     <TextView
         android:id="@+id/hotel_back_number"
@@ -123,7 +123,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/hotel_back_number"
         app:layout_constraintTop_toBottomOf="@+id/hotel_chip_third"
-        tools:text=" · Ночей " />
+        android:text=" · Ночей " />
 
     <TextView
         android:id="@+id/hotel_night_quantity"

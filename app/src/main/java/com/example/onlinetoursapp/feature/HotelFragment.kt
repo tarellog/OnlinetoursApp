@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.onlinetoursapp.databinding.FragmentHotelBinding
 import com.example.onlinetoursapp.feature.adapter.hotel.HotelAdapter
-import com.example.onlinetoursapp.feature.di.SearchHolder
+import com.example.onlinetoursapp.feature.di.FeatureHolder
 import com.example.onlinetoursapp.feature.domain.model.HotelData
 import com.example.onlinetoursapp.feature.presenter.HotelPresenter
 import com.example.onlinetoursapp.feature.presenter.HotelView
@@ -29,7 +29,7 @@ class HotelFragment : MvpAppCompatFragment(), HotelView {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        SearchHolder.createComponent().inject(this)
+        FeatureHolder.createComponent().inject(this)
     }
 
     override fun onCreateView(
@@ -53,6 +53,12 @@ class HotelFragment : MvpAppCompatFragment(), HotelView {
 
     override fun loadHotelData(hotelData: List<HotelData>) {
         hotelAdapter.submitList(hotelData)
+    }
+
+    override fun onDestroyView() {
+        binding.recycler.adapter = null
+        _binding = null
+        super.onDestroyView()
     }
 
 }

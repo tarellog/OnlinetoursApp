@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">OnlinetoursApp</string>
-
-    <!-- Search feature -->
     <string name="depart_city">Город вылета</string>
     <string name="cansel_dialog">Закрыть</string>
     <string name="city_name">Москва</string>
@@ -15,6 +13,5 @@
     <string name="count_people">2 взрослых</string>
     <string name="who_coming">КТО ЕДЕТ</string>
     <string name="search_tour">Найти тур</string>
-
-
+    <string name="total_amount">от %d ₽ за 2-х</string>
 </resources>

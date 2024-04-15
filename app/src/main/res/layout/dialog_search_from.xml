@@ -29,7 +29,7 @@
             android:background="@drawable/edit_text_background"
             android:ellipsize="end"
             android:hint="@string/depart_city"
-            android:inputType="textEmailAddress"
+            android:inputType="textCapSentences"
             android:paddingHorizontal="17dp"
             android:singleLine="true"
             android:textColor="@color/black"
@@ -48,14 +48,24 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:overScrollMode="never"
-        android:paddingHorizontal="16dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:layout="@layout/item_search_cities" />
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            android:paddingHorizontal="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:layout="@layout/item_search_cities" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
 
 </LinearLayout>

@@ -18,7 +18,7 @@ interface SearchApi {
     @GET("searches/{key}/results")
     suspend fun getSearchResult(
         @Path("key") key: String,
-        @Query("limit") page: Int = 10,
+        @Query("limit") page: Int = 40,
     ): ResultResponse
 
     @GET("depart_cities")
